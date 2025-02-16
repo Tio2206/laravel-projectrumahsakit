@@ -22,6 +22,7 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
             $table->string('role', 15)->default('Administrator');
+            $table->string('profile_picture')->nullable(); // Add this line
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

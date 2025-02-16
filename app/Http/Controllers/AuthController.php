@@ -31,28 +31,32 @@ class AuthController extends Controller
 
     public function resetPasswordPage($token)
     {
-        return view('reset_password', ['token' => $token]);
+        return view('auth.reset', ['token' => $token]);
     }
 
     public function updatePassword(Request $request)
     {
         $request->validate([
-            'password' => 'required|min:6|confirmed',
+            'password' => 'required|min:8|confirmed',
             'token' => 'required'
+        ], [
+            'password.required' => 'Password is required.',
+            'password.min' => 'Password must be at least 8 characters long.',
+            'password.confirmed' => 'Passwords do not match.',
         ]);
 
         // Check if the token exists in the password_reset_tokens table
         $resetToken = DB::table('password_reset_tokens')->where('token', $request->token)->first();
 
         if (!$resetToken) {
-            return redirect()->route('forgot-password')->with('error', 'Token tidak valid.');
+            return redirect()->route('forgotPassword')->with('error', 'Invalid token.');
         }
 
         // Find the user associated with the email in the reset token
         $user = DB::table('users')->where('email', $resetToken->email)->first();
 
         if (!$user) {
-            return redirect()->route('forgot-password')->with('error', 'Email tidak ditemukan.');
+            return redirect()->route('forgotPassword')->with('error', 'Email not found.');
         }
 
         // Update the password for the user
@@ -63,7 +67,6 @@ class AuthController extends Controller
         // Delete the reset token after using it
         DB::table('password_reset_tokens')->where('token', $request->token)->delete();
 
-        return redirect('/')->with('success', 'Password berhasil diubah.');
+        return redirect('/login')->with('success', 'Password has been changed successfully.');
     }
-
 }

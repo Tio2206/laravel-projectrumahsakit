@@ -17,3 +17,5 @@ Route::post('actionlogin', [LoginController::class, 'actionlogin'])->name('actio
 Route::post('actionlogout', [LoginController::class, 'actionlogout'])->name('actionlogout')->middleware('auth');
 Route::post('forgot-password', [AuthController::class, 'sendResetLink'])->name('sendResetLink');
 Route::get('forgotpassword', [AuthController::class, 'forgotPassword'])->name('forgotPassword');
+Route::get('/reset-password/{token}', [AuthController::class, 'resetPasswordPage'])->name('password.reset');
+Route::post('/reset-password', [AuthController::class, 'updatePassword'])->name('password.update');

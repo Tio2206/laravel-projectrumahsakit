@@ -19,10 +19,9 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
                                 id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                                <div class="rounded-circle bg-light d-flex justify-content-center align-items-center"
-                                    style="width: 35px; height: 35px;">
-                                    <i class="bi bi-person-fill text-dark"></i>
-                                </div>
+                                <img src="{{ asset('storage/' . (Auth::user()->profile_picture ?? 'default-profile.png')) }}"
+                                    alt="Profile Picture" class="rounded-circle"
+                                    style="width: 35px; height: 35px; object-fit: cover;">
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
                                 <li><a class="dropdown-item" href="">Profile</a></li>
@@ -58,38 +57,38 @@
     </section>
 
     @auth
-    <!-- Dokter Section (Hanya Tampil Jika Sudah Login) -->
-    <section id="dokter" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-4 fw-bold">Our Doctors</h2>
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card text-center shadow-sm">
-                        <div class="card-body">
-                            <h3 class="card-title">Dr. John Doe</h3>
-                            <p class="card-text">Cardiologist</p>
+        <!-- Dokter Section (Hanya Tampil Jika Sudah Login) -->
+        <section id="dokter" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-4 fw-bold">Our Doctors</h2>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="card text-center shadow-sm">
+                            <div class="card-body">
+                                <h3 class="card-title">Dr. John Doe</h3>
+                                <p class="card-text">Cardiologist</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card text-center shadow-sm">
-                        <div class="card-body">
-                            <h3 class="card-title">Dr. Jane Smith</h3>
-                            <p class="card-text">Pediatrician</p>
+                    <div class="col-md-4">
+                        <div class="card text-center shadow-sm">
+                            <div class="card-body">
+                                <h3 class="card-title">Dr. Jane Smith</h3>
+                                <p class="card-text">Pediatrician</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card text-center shadow-sm">
-                        <div class="card-body">
-                            <h3 class="card-title">Dr. Emily Brown</h3>
-                            <p class="card-text">Dermatologist</p>
+                    <div class="col-md-4">
+                        <div class="card text-center shadow-sm">
+                            <div class="card-body">
+                                <h3 class="card-title">Dr. Emily Brown</h3>
+                                <p class="card-text">Dermatologist</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endauth
 
     <!-- Footer -->
