@@ -41,7 +41,7 @@
                     <div class="mb-3">
                         <label class="form-label fw-bold">Spesialisasi</label>
                         <select name="spesialisasi" class="form-select">
-                            <option value="">- Pilih Spesialisasi -</option>
+                            <option value="" disabled selected>- Pilih Spesialisasi -</option>
                             <option value="Poli Umum">Poli Umum</option>
                             <option value="Poli Anak">Poli Anak</option>
                             <option value="Poli Gigi">Poli Gigi</option>
@@ -61,20 +61,10 @@
                     <div class="mb-3">
                         <label class="form-label fw-bold">Lokasi Praktik</label>
                         <select name="lokasiPraktik" class="form-select">
-                            <option value="">- Pilih Lokasi -</option>
-                            <option value="Jatiwaringin">Jatiwaringin</option>
-                            <option value="Cipayung">Cipayung</option>
-                            <option value="Cilangkap">Cilangkap</option>
-                            <option value="Munjul">Munjul</option>
-                            <option value="Cibubur">Cibubur</option>
-                            <option value="Jatinegara">Jatinegara</option>
-                            <option value="Matraman">Matraman</option>
-                            <option value="Kebon Jeruk">Kebon Jeruk</option>
-                            <option value="Tangerang">Tangerang</option>
-                            <option value="Bekasi">Bekasi</option>
-                            <option value="Depok">Depok</option>
-                            <option value="Tambun">Tambun</option>
-                            <option value="Cikarang">Cikarang</option>
+                            <option value="" disabled selected>- Pilih Lokasi -</option>
+                            @foreach ($ruangans as $ruangan)
+                                <option value="{{ $ruangan->namaRuangan }}">{{ $ruangan->namaRuangan }}</option>
+                            @endforeach
                         </select>
                     </div>
 

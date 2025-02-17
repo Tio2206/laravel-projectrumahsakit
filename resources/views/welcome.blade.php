@@ -12,9 +12,14 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     @auth
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('dktr.index') }}">Dokter</a>
-                        </li>
+                        @if (Auth::user()->role !== 'User')
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('ruangan.index') }}">Ruangan</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ route('dktr.index') }}">Dokter</a>
+                            </li>
+                        @endif
                         <!-- Profile Icon -->
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button"
@@ -24,7 +29,7 @@
                                     style="width: 35px; height: 35px; object-fit: cover;">
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="profileDropdown">
-                                <li><a class="dropdown-item" href="">Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ route('profile.view') }}">View & Edit Profile</a></li>
                                 <li>
                                     <form action="{{ route('actionlogout') }}" method="POST">
                                         @csrf
@@ -35,7 +40,7 @@
                         </li>
                     @else
                         <li class="nav-item">
-                            <a class="btn btn-light text-primary" href="{{ route('login.index') }}">Login</a>
+                            <a class="btn btn-light text-primary" href="{{ route('login') }}">Login</a>
                         </li>
                     @endauth
                 </ul>
@@ -51,13 +56,13 @@
             @auth
                 <a href="#dokter" class="btn btn-primary btn-lg shadow-sm">Find a Doctor</a>
             @else
-                <a href="{{ route('login.index') }}" class="btn btn-primary btn-lg shadow-sm">Login to Get Started</a>
+                <a href="{{ route('login') }}" class="btn btn-primary btn-lg shadow-sm">Login to Get Started</a>
             @endauth
         </div>
     </section>
 
     @auth
-        <!-- Dokter Section (Hanya Tampil Jika Sudah Login) -->
+        <!-- Dokter Section (Hanya Tampil Jika Sudah Login dan Bukan User) -->
         <section id="dokter" class="py-5">
             <div class="container">
                 <h2 class="text-center mb-4 fw-bold">Our Doctors</h2>

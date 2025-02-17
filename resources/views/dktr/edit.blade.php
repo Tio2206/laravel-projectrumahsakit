@@ -64,20 +64,12 @@
                     <div class="mb-3">
                         <label class="form-label fw-bold">Lokasi Praktik</label>
                         <select name="lokasiPraktik" class="form-select">
-                            <option value="{{ $dktr->lokasiPraktik }}" selected>{{ $dktr->lokasiPraktik }}</option>
-                            <option value="Jatiwaringin">Jatiwaringin</option>
-                            <option value="Cipayung">Cipayung</option>
-                            <option value="Cilangkap">Cilangkap</option>
-                            <option value="Munjul">Munjul</option>
-                            <option value="Cibubur">Cibubur</option>
-                            <option value="Jatinegara">Jatinegara</option>
-                            <option value="Matraman">Matraman</option>
-                            <option value="Kebon Jeruk">Kebon Jeruk</option>
-                            <option value="Tangerang">Tangerang</option>
-                            <option value="Bekasi">Bekasi</option>
-                            <option value="Depok">Depok</option>
-                            <option value="Tambun">Tambun</option>
-                            <option value="Cikarang">Cikarang</option>
+                            @foreach($ruangans as $ruangan)
+                                <option value="{{ $ruangan->namaRuangan }}"
+                                    {{ $ruangan->namaRuangan == $dktr->lokasiPraktik ? 'selected' : '' }}>
+                                    {{ $ruangan->namaRuangan }}
+                                </option>
+                            @endforeach
                         </select>
                     </div>
 

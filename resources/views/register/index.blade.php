@@ -94,7 +94,7 @@
                             Register</button>
                     </form>
                     <hr>
-                    <p class="text-center mb-1">Sudah punya akun? <a href="{{ route('login.index') }}"
+                    <p class="text-center mb-1">Sudah punya akun? <a href="{{ route('login') }}"
                             class="text-primary">Login</a> sekarang!</p>
                 </div>
             </div>
