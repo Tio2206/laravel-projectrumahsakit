@@ -10,10 +10,19 @@ class RuanganController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $ruangan = Ruangan::latest()->paginate(5);
-        return view('ruangan.index', compact('ruangan'))->with('i', (request()->input('page', 1) - 1) * 5);
+        $search = $request->get('search');
+
+        $ruangan = Ruangan::latest()
+            ->when($search, function ($query, $search) {
+                return $query->where('namaRuangan', 'LIKE', "%{$search}%");
+            })
+            ->paginate(5);
+
+        return view('ruangan.index', compact('ruangan'))
+            ->with('i', (request()->input('page', 1) - 1) * 5)
+            ->with('search', $search); // Pass the search query back to the view
     }
 
     /**

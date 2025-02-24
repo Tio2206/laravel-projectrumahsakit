@@ -12,6 +12,20 @@
             </div>
         </div>
 
+        <!-- Search form -->
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <form action="{{ route('ruangan.index') }}" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search" value="{{ request()->get('search') }}" placeholder="Search by Nama Ruangan">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                        <!-- Clear Button -->
+                        <a href="{{ route('ruangan.index') }}" class="btn btn-secondary">Clear</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         @if ($message = Session::get('success'))
             <div class="alert alert-success mt-3">{{ $message }}</div>
         @endif

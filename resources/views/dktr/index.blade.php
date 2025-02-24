@@ -12,6 +12,20 @@
             </div>
         </div>
 
+        <div class="row mt-3">
+            <div class="col-lg-12">
+                <!-- Search form -->
+                <form action="{{ route('dktr.index') }}" method="GET">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="search" value="{{ request()->get('search') }}" placeholder="Search by Nama Dokter">
+                        <button class="btn btn-primary" type="submit">Search</button>
+                        <!-- Clear Button -->
+                        <a href="{{ route('dktr.index') }}" class="btn btn-secondary">Clear</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
         @if ($message = Session::get('success'))
             <div class="alert alert-success mt-3">{{ $message }}</div>
         @endif
