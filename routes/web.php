@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DokterControllers;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PasienController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RuanganController;
 use App\Http\Controllers\UserController;
@@ -38,9 +39,14 @@ Route::middleware(['auth', CheckRole::class])->group(function () {
     Route::resource('dktr', DokterControllers::class);
 });
 
-// Doctor Resource Routes
+// Ruangan Resource Routes
 Route::middleware(['auth', CheckRole::class])->group(function () {
     Route::resource('ruangan', RuanganController::class);
+});
+
+// Pasien Resource Routes
+Route::middleware(['auth', CheckRole::class])->group(function () {
+    Route::resource('pasien', PasienController::class);
 });
 
 // Profile Routes (Requires Authentication)

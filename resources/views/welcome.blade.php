@@ -14,6 +14,9 @@
                     @auth
                         @if (Auth::user()->role !== 'User')
                             <li class="nav-item">
+                                <a class="nav-link" href="{{ route('pasien.index') }}">Pasien</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="{{ route('ruangan.index') }}">Ruangan</a>
                             </li>
                             <li class="nav-item">
